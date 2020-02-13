@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // const BASEURL = "https://www.googleapis.com/books/v1";
 const BASEURL = "https://www.googleapis.com/books/v1/volumes?q="
-const APIKEY = "&key=AIzaSyAmDKuFgCXdea2kPgyZlO3hWWDzVE0-Z0o";
+const APIKEY = "";
 
 export default {
     search: (query) => axios.get(BASEURL + query + APIKEY),
