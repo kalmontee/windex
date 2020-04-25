@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './style.css'
+import './style.css'
 
 export function Input(props) {
     return (
@@ -13,7 +13,7 @@ export function Input(props) {
                 name="search"
                 type="text"
                 />
-                <button className="search-button " onClick={() => props.searchBooksHandler()}>
+                <button className="search-button" type="submit" onClick={() => props.searchBooksHandler()}>
                     Search
                 </button>
             </div>

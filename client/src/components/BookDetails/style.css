@@ -1,0 +1,38 @@
+div.thumbnail {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 15%;
+  padding-top: 20%;
+}
+
+a.link {
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0.3rem;
+  background-color: #3d83dd;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 20px 0;
+  border-radius: 0.125rem;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.title {
+  color: rgb(199, 34, 34);
+  font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.subtitle,
+.authors {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.synopsis {
+  line-height: 1.6rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
