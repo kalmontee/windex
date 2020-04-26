@@ -10,7 +10,8 @@ export default {
   getBooks: () => axios.get("/api/books"),
 
   getBook: (id) => axios.get("/api/books/" + id),
-  
+
   deleteBook: (id) => axios.delete("/api/books", id),
-  // saveBook: () => axios.post("/api/books", saveBook)
+
+  saveBook: () => axios.post("/api/books", saveBook)
 }

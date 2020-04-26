@@ -9,7 +9,7 @@ const NavBar = (props) => {
       <ul>
         <h2>Google Books</h2>
         <NavigationItem link="/" active>Search</NavigationItem>
-        <NavigationItem link="/Saved" >Saved</NavigationItem>
+        <NavigationItem link="" >Saved</NavigationItem>
       </ul>
     </nav>
   )

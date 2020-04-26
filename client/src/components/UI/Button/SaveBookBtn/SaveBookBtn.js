@@ -1,14 +1,11 @@
 import React from 'react';
-import API from '../../../../utils/API'
 
-function SaveBook(props) {
-   return (
-      <div>
-         <button className="save-bookBtn" onClick={() => props.saveBookBtnHandler()}>
-            Save Book
-         </button>
-      </div>
-   )
-}
+import classes from './SaveBookBtn.module.css';
 
-export default SaveBook;
+const SaveBookBtn = (props) => (
+   <button className={classes.SaveBookBtn} onClick={() => props.bookBtnHandler(id)}>
+      Save Book
+   </button>
+)
+
+export default SaveBookBtn;

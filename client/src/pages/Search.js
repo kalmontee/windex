@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from "../components/Grid";
+import { Container, Row } from "../components/Grid";
 import BookDetails from '../components/Books/BookDetails/BookDetails';
 import BookList from '../components/Books/BookDetails/BookList/BookList';
 import InputSearch from '../components/InputSearch/InputSearch';
+import Aux from '../HOC/Auxiliary';
 import API from "../utils/API";
-import classes from "./style.module.css";
 
 class Search extends Component {
   state = {
@@ -36,6 +36,10 @@ class Search extends Component {
     this.searchGoogleBooks(this.state.search);
   }
 
+  saveBookHandler = (id) => {
+    console.log("This");
+  }
+
   render() {
     let booksResult = null;
     if (this.state.books.length > 0) {
@@ -43,20 +47,21 @@ class Search extends Component {
         <BookList>
           {this.state.books.map(book => {
             return (
-              // Getting multiple books of the same IDs. If they have the same ID then give book.etag as a second ID.
-              <div className={classes.BookSection} key={book.id === book.id ? book.etag : null}>
-                <BookDetails
-                  authors={book.volumeInfo.authors ? book.volumeInfo.authors : null}
-                  subtitle={book.volumeInfo.subtitle ? book.volumeInfo.subtitle : null}
-                  title={book.volumeInfo.title}
-                  synopsis={book.volumeInfo.description ?
-                    book.volumeInfo.description : null}
-                  link={book.volumeInfo.infoLink}
-                  thumbnail={book.volumeInfo.imageLinks.thumbnail ?
-                    book.volumeInfo.imageLinks.thumbnail : null}
-                >
-                </BookDetails>
-              </div>
+              <BookDetails
+                // Getting multiple books of the same IDs. If they have the same ID then give book.etag as a second ID.
+                key={book.id === book.id ? book.etag : null}
+                authors={book.volumeInfo.authors ? book.volumeInfo.authors : null}
+                title={book.volumeInfo.title}
+                synopsis={book.volumeInfo.description ?
+                  book.volumeInfo.description : null}
+                link={book.volumeInfo.infoLink}
+
+                // Sometimes the API does not have a imageLinks thumbnail images. Gives me undefined -- bug
+                thumbnail={book.volumeInfo.imageLinks.thumbnail ?
+                  book.volumeInfo.imageLinks.thumbnail : null}
+                SaveBookBtn={this.saveBookHandler}
+              >
+              </BookDetails>
             )
           })}
         </BookList>
@@ -66,15 +71,15 @@ class Search extends Component {
     return (
       <Container>
         <Row>
-          <Col size="md-12">
-            <InputSearch
-              name="query"
-              value={this.state.value}
-              handleInputChange={this.handleInputChange}
-              searchBooksHandler={this.searchBooksHandler}
-            />
-            {booksResult}
-          </Col>
+          <InputSearch
+            name="query"
+            value={this.state.value}
+            handleInputChange={this.handleInputChange}
+            searchBooksHandler={this.searchBooksHandler}
+          />
+        </Row>
+        <Row>
+          {booksResult}
         </Row>
       </Container>
     )
