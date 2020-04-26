@@ -1,0 +1,41 @@
+.Navbar {
+  background-color: #007bff;
+  padding: 0.2rem 1rem;
+  align-items: center;
+}
+
+.Navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.Navbar h2 {
+  color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+.Navbar li {
+  text-decoration: none;
+  font-size: 1.4rem;
+  padding: 0 10px;
+  color: #fff;
+}
+
+.NavLink {
+  text-decoration: none;
+  color: #000;
+}
+
+.Active {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  border-bottom: 2px solid #fbbc05;
+}
+
+.NavLink:hover {
+  text-decoration: none;
+  color: #ea4335;
+  color: #34a853;
+  color: #fbbc05;
+}

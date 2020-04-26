@@ -1,9 +1,10 @@
-.form-control {
+.FormControl {
   text-align: center;
   margin: 20px 0;
+  padding: 20px 0;
 }
 
-.search-box {
+.SearchBox {
   width: 40%;
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
@@ -13,7 +14,7 @@
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-.search-button {
+.SearchButton {
   padding: 1rem 1rem 0.6rem 1rem;
   border-radius: 0.3rem;
   background-color: #75f334;

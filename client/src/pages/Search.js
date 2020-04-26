@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from "../components/Grid";
-import { BookList, BookDetails } from '../components/BookDetails/BookDetails';
-import { Input } from '../components/Form';
+import BookDetails from '../components/Books/BookDetails/BookDetails';
+import BookList from '../components/Books/BookDetails/BookList/BookList';
+import InputSearch from '../components/InputSearch/InputSearch';
 import API from "../utils/API";
-import "./style.css";
+import classes from "./style.module.css";
 
 class Search extends Component {
   state = {
@@ -16,7 +17,10 @@ class Search extends Component {
     API.search(query)
       .then(res => {
         console.log(res);
-        this.setState({ books: res.data.items, search: this.state.search });
+        this.setState({
+          books: res.data.items,
+          search: this.state.search
+        });
       })
       .catch(err => err)
   }
@@ -39,16 +43,16 @@ class Search extends Component {
         <BookList>
           {this.state.books.map(book => {
             return (
-              <div className="BookSection" key={book.id}>
+              <div className={classes.BookSection} key={book.id}>
                 <BookDetails
-                  authors={book.volumeInfo.authors ? book.volumeInfo.authors : ["No Author Available"]}
-                  subtitle={book.volumeInfo.subtitle ? book.volumeInfo.subtitle : ["No Subtitle Available"]}
+                  authors={book.volumeInfo.authors ? book.volumeInfo.authors : null}
+                  subtitle={book.volumeInfo.subtitle ? book.volumeInfo.subtitle : null}
                   title={book.volumeInfo.title}
                   synopsis={book.volumeInfo.description ?
-                    book.volumeInfo.description : "No Description Available"}
+                    book.volumeInfo.description : null}
                   link={book.volumeInfo.infoLink}
                   thumbnail={book.volumeInfo.imageLinks.thumbnail ?
-                    book.volumeInfo.imageLinks.thumbnail : "No Image Available"}
+                    book.volumeInfo.imageLinks.thumbnail : null}
                 >
                 </BookDetails>
               </div>
@@ -62,13 +66,13 @@ class Search extends Component {
       <Container>
         <Row>
           <Col size="md-12">
-              <Input
-                name="query"
-                value={this.state.value}
-                handleInputChange={this.handleInputChange}
-                searchBooksHandler={this.searchBooksHandler}
-              />
-              {booksResult}
+            <InputSearch
+              name="query"
+              value={this.state.value}
+              handleInputChange={this.handleInputChange}
+              searchBooksHandler={this.searchBooksHandler}
+            />
+            {booksResult}
           </Col>
         </Row>
       </Container>

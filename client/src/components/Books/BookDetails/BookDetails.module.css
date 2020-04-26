@@ -1,12 +1,4 @@
-div.thumbnail {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 15%;
-  padding-top: 20%;
-}
-
-a.link {
+.BookLink {
   padding: 8px;
   text-decoration: none;
   border-radius: 0.3rem;
@@ -21,18 +13,18 @@ a.link {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-.title {
+.BookTitle {
   color: rgb(199, 34, 34);
   font-size: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.subtitle,
-.authors {
+.BookSubtitle,
+.BookAuthors {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.synopsis {
+.BookSynopsis {
   line-height: 1.6rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
