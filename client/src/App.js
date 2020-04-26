@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from "./components/Navigation/NavigationItems/NavigationItems";
+import Jumbotron from './components/UI/Jumbotron/Jumbotron';
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 
@@ -10,10 +10,11 @@ function App() {
     <Router>
       <>
         <NavBar />
+        <Jumbotron />
         <Route exact path="/" component={Search} />
         <Route exact path="/Saved" component={Saved} />
       </>
-    </Router> 
+    </Router>
   );
 }
 

@@ -1,8 +1,4 @@
-.Thumbnail {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 30%;
-  height: 80px;
-  padding-top: 20%;
+.Thumbnail img {
+  width: 40%;
+  height: auto;
 }

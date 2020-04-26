@@ -1,14 +1,14 @@
-div.jumbotron {
+.Jumbotron {
   background-image: url(https://ae01.alicdn.com/kf/H7d79a27799c64724abd582d6cb5d197c6/Custom-3D-Photo-Wallpaper-Candle-Bookshelf-Background-Mural-Living-Room-Bedroom-Vinyl-Mural-Waterproof-Wallpaper-Home.jpg);
   padding: 80px;
   text-align: center;
 }
 
-.jumboTitle {
+.Jumbotron h1 {
   color: #fff;
 }
 
-.white {
+.Jumbotron a {
   color: #fff;
   text-decoration: none;
 }

@@ -1,5 +1,5 @@
 .BookList {
   display: flex;
   flex-flow: wrap;
-  justify-content: end;
+  justify-content: flex-start;
 }

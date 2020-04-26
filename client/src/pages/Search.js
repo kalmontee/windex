@@ -22,7 +22,7 @@ class Search extends Component {
           search: this.state.search
         });
       })
-      .catch(err => err)
+      .catch(err => console.log(err));
   }
 
   // To grabbed the value of the user Input
@@ -43,7 +43,8 @@ class Search extends Component {
         <BookList>
           {this.state.books.map(book => {
             return (
-              <div className={classes.BookSection} key={book.id}>
+              // Getting multiple books of the same IDs. If they have the same ID then give book.etag as a second ID.
+              <div className={classes.BookSection} key={book.id === book.id ? book.etag : null}>
                 <BookDetails
                   authors={book.volumeInfo.authors ? book.volumeInfo.authors : null}
                   subtitle={book.volumeInfo.subtitle ? book.volumeInfo.subtitle : null}
