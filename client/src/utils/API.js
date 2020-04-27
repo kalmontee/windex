@@ -11,7 +11,9 @@ export default {
 
   getBook: (id) => axios.get("/api/books/" + id),
 
+  // Deletes the saved book with the given id
   deleteBook: (id) => axios.delete("/api/books", id),
-
-  saveBook: () => axios.post("/api/books", saveBook)
+  
+  // Saves an book to the database
+  saveBook: (bookData) => axios.post("/api/books", bookData)
 }
