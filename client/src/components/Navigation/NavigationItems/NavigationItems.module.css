@@ -1,11 +1,13 @@
 .Navbar {
   background-color: #007bff;
-  padding: 0.2rem 1rem;
+  padding: 0.4rem 6rem;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 .Navbar ul {
-  display: flex;
+  display: inline-flex;
   list-style: none;
 }
 
