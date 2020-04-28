@@ -1,12 +1,19 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
+import Aux from '../../../../HOC/Auxiliary';
 import classes from './NavigationItem.module.css';
 
 const NavigationItem = (props) => (
-  <li className={classes.NavigationItem}>
-    <Link to={props.link} className={props.active ? classes.Active : classes.NavLink}>{props.children}</Link>
-  </li>
+  <Aux>
+    <li className={classes.NavigationItem}>
+      <NavLink to="/" exact activeClassName={classes.Active ? classes.Active : null}>Search</NavLink>
+    </li>
+
+    <li className={classes.NavigationItem}>
+      <NavLink to="/Saved" exact activeClassName={classes.Active ? classes.Active : null}>Saved</NavLink>
+    </li>
+  </Aux>
 );
 
 export default NavigationItem;
