@@ -3,41 +3,51 @@ import { Container, Row } from "../components/Grid";
 import BookDetails from '../components/Books/BookDetails/BookDetails';
 import BookList from '../components/Books/BookDetails/BookList/BookList';
 import InputSearch from '../components/InputSearch/InputSearch';
-import Aux from '../HOC/Auxiliary';
+// import Aux from '../HOC/Auxiliary';
 import API from "../utils/API";
 
 class Search extends Component {
   state = {
     search: "",
+    message: "",
     books: [],
   }
+
+  // OnClick button function to receive all the data
+  searchBooksHandler = () => this.searchGoogleBooks(this.state.search);
 
   // Making a request to Google Books API
   searchGoogleBooks = (query) => {
     API.search(query)
-      .then(res => {
-        console.log(res);
+      .then(res => this.setState({ books: res.data.items }))
+      // Throw in another component displaying an error message.
+      .catch(() =>
         this.setState({
-          books: res.data.items,
-          search: this.state.search
-        });
-      })
-      .catch(err => console.log(err));
+          books: [],
+          message: "No New Books Found, Try a Different Query"
+        })
+      );
   }
 
   // To grabbed the value of the user Input
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     const { name, value } = event.target
     this.setState({ [name]: value });
   };
 
-  // OnClick button function to receive all the data
-  searchBooksHandler = () => {
-    this.searchGoogleBooks(this.state.search);
-  }
-
   saveBookHandler = (id) => {
-    console.log("This");
+    let book = this.state.books.find(book => book.id === id);
+
+    API.saveBook({
+      id: book.id,
+      title: book.volumeInfo.title,
+      link: book.volumeInfo.infoLink,
+      authors: book.volumeInfo.authors,
+      description: book.volumeInfo.description,
+      image: book.volumeInfo.imageLinks.thumbnail
+    })
+      .then(this.setState({ message: alert("Your book is saved") }))
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -50,16 +60,13 @@ class Search extends Component {
               <BookDetails
                 // Getting multiple books of the same IDs. If they have the same ID then give book.etag as a second ID.
                 key={book.id === book.id ? book.etag : null}
-                authors={book.volumeInfo.authors ? book.volumeInfo.authors : null}
+                authors={book.volumeInfo.authors.join(', ')}
                 title={book.volumeInfo.title}
-                synopsis={book.volumeInfo.description ?
-                  book.volumeInfo.description : null}
+                synopsis={book.volumeInfo.description ? book.volumeInfo.description : null}
                 link={book.volumeInfo.infoLink}
-
                 // Sometimes the API does not have a imageLinks thumbnail images. Gives me undefined -- bug
-                thumbnail={book.volumeInfo.imageLinks.thumbnail ?
-                  book.volumeInfo.imageLinks.thumbnail : null}
-                SaveBookBtn={this.saveBookHandler}
+                thumbnail={book.volumeInfo.imageLinks.thumbnail ? book.volumeInfo.imageLinks.thumbnail : null}
+                SaveBookBtn={() => this.saveBookHandler(book.id)}
               >
               </BookDetails>
             )
