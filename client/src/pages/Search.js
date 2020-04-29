@@ -31,10 +31,13 @@ class SearchBooks extends Component {
     // Initialize the loader
     this.setState({ loader: true });
     API.search(this.state.search)
-      .then(res => this.setState({
-        books: res.data.items,
-        loader: false // remove the loader once it finds results
-      }))
+      .then(res => {
+        console.log(res.data)
+        this.setState({
+          books: res.data.items,
+          loader: false // remove the loader once it finds results
+        })
+      })
       // Throw in a Modal component displaying an error message.
       .catch(() =>
         this.setState({
@@ -71,12 +74,11 @@ class SearchBooks extends Component {
               <BookDetails
                 // Getting books with the same IDs. If they have the same ID then give book.etag as a second ID.
                 key={book.id ? book.etag : null}
-                authors={book.volumeInfo.authors.join(', ')}
+                authors={book.volumeInfo.authors.join(", ")}
                 title={book.volumeInfo.title}
                 synopsis={book.volumeInfo.description ? book.volumeInfo.description : null}
                 link={book.volumeInfo.infoLink}
-                // Sometimes the API does not have a imageLinks thumbnail images. Gives me undefined -- bug
-                thumbnail={book.volumeInfo.imageLinks.thumbnail ? book.volumeInfo.imageLinks.thumbnail : null}
+                thumbnail={book.volumeInfo.imageLinks === undefined ? null : book.volumeInfo.imageLinks.thumbnail}
                 booksBtnHandler={() => this.saveBookHandler(book.id)}
                 name="Save Book"
                 btnType={"SaveBtn"}
