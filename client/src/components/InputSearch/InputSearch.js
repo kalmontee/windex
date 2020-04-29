@@ -3,19 +3,16 @@ import classes from './InputSearch.module.css'
 
 const Input = (props) => {
   return (
-    <div className={classes.FormControl}>
+    <form className={classes.FormControl} onSubmit={props.formSubmit}>
       <input
-        className={classes.SearchBox}
         onChange={props.handleInputChange}
         value={props.value}
-        placeholder="Book Title"
+        placeholder="Search for book titles or authors.."
         name="search"
         type="text"
       />
-      <button className={classes.SearchButton} type="submit" onClick={() => props.searchBooksHandler()}>
-        Search
-      </button>
-    </div>
+      <button type="submit">Search</button>
+    </form>
   )
 }
 
