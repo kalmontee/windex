@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import { Container, Row } from "../components/Grid";
+import Jumbotron from '../components/UI/Jumbotron/Jumbotron';
 import BookDetails from '../components/Books/BookDetails/BookDetails';
 import BookList from '../components/Books/BookDetails/BookList/BookList';
 import InputSearch from '../components/InputSearch/InputSearch';
@@ -95,6 +97,9 @@ class SearchBooks extends Component {
 
     return (
       <Container>
+        <Row>
+          <Jumbotron />
+        </Row>
         <Row>
           <InputSearch
             name="query"
