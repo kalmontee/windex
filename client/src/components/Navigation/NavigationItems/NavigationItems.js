@@ -7,7 +7,7 @@ const NavBar = (props) => {
   return (
     <nav className={classes.Navbar}>
       <div>
-        <h2>Google Books</h2>
+        <h2>Virtual <span>G</span>Books</h2>
       </div>
       <ul>
         <NavigationItem />
