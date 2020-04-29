@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Thumbnail from "../Thumbnails/Thumbnails";
-import SaveBookBtn from '../../UI/Button/SaveBookBtn/SaveBookBtn';
 import classes from "./BookDetails.module.css";
 
 const BookDetails = (props) => {
@@ -24,8 +23,11 @@ const BookDetails = (props) => {
             >Go to book!
             </a>
 
-            <SaveBookBtn
-              bookBtnHandler={props.SaveBookBtn} />
+            <button
+              className={[classes.Button, classes[props.btnType]].join(' ')}
+              onClick={props.booksBtnHandler}>{props.name}
+            </button>
+
           </div>
         </div>
       </section>
