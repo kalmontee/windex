@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/Navigation/NavigationItems/NavigationItems";
-import Jumbotron from './components/UI/Jumbotron/Jumbotron';
 import SearchBooks from "./pages/Search";
 import SavedBooks from "./pages/Saved";
 import NotFound from "./pages/NotFound/NotFound";
@@ -11,7 +10,6 @@ class App extends Component {
     return (
       <Router>
         <NavBar />
-        <Jumbotron />
         <Switch>
           <Route exact path="/" component={SearchBooks} />
           <Route exact path="/saved" component={SavedBooks} />
