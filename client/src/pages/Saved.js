@@ -52,6 +52,8 @@ class SavedBooks extends Component {
                })}
             </BookList>
          );
+      } else {
+         booksResult = <h1 style={{textAlign: 'center', marginTop: '50px'}}>You don't have any books saved.</h1>
       }
       
       if (this.state.loader) {
