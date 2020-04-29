@@ -1,3 +1,10 @@
+.NotFoundPage {
+  display: flex;
+}
+
+.Info {
+  width: 50%;
+}
 
 .Emoji {
   text-align: center;
@@ -9,4 +16,17 @@
 .Text {
   text-align: center;
   font-weight: 400;
+}
+
+.Background {
+  background-image: url(https://www.lineupthebooks.com/content/images/2019/01/boy-in-space-post-img.png);
+  background-size: 100% 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  width: 50%;
+  height: auto;
+  min-height: 675px;
+  -webkit-box-shadow: -9px 0px 10px -4px rgba(0, 0, 0, 0.71);
+  box-shadow: -9px 0px 10px -4px rgba(0, 0, 0, 0.71);
 }
