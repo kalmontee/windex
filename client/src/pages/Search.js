@@ -6,7 +6,7 @@ import InputSearch from '../components/InputSearch/InputSearch';
 import Spinner from '../components/UI/Spinner/Spinner';
 import API from "../utils/API";
 
-class Search extends Component {
+class SearchBooks extends Component {
   state = {
     search: "",
     message: "",
@@ -14,14 +14,23 @@ class Search extends Component {
     books: [],
   }
 
+  // To grabbed the value of the user Input
+  handleInputChange = (event) => {
+    const { name, value } = event.target
+    this.setState({ [name]: value });
+  };
+
   // OnClick button function to receive all the data
-  searchBooksHandler = () => this.searchGoogleBooks(this.state.search);
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    this.searchGoogleBooks();
+  }
 
   // Making a request to Google Books API
-  searchGoogleBooks = (query) => {
+  searchGoogleBooks = () => {
     // Initialize the loader
     this.setState({ loader: true });
-    API.search(query)
+    API.search(this.state.search)
       .then(res => this.setState({
         books: res.data.items,
         loader: false // remove the loader once it finds results
@@ -35,12 +44,6 @@ class Search extends Component {
         })
       );
   }
-
-  // To grabbed the value of the user Input
-  handleInputChange = (event) => {
-    const { name, value } = event.target
-    this.setState({ [name]: value });
-  };
 
   saveBookHandler = (id) => {
     let book = this.state.books.find(book => book.id === id);
@@ -95,7 +98,7 @@ class Search extends Component {
             name="query"
             value={this.state.value}
             handleInputChange={this.handleInputChange}
-            searchBooksHandler={this.searchBooksHandler}
+            formSubmit={(event) => this.handleFormSubmit(event)}
           />
         </Row>
         <Row>
@@ -106,4 +109,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default SearchBooks;
