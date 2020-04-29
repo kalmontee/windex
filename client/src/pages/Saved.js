@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { Container } from '../components/Grid/index';
+import { Container, Row } from '../components/Grid/index';
+import Jumbotron from '../components/UI/Jumbotron/Jumbotron';
 import BookDetails from '../components/Books/BookDetails/BookDetails';
 import BookList from '../components/Books/BookDetails/BookList/BookList';
 import Spinner from '../components/UI/Spinner/Spinner';
@@ -25,7 +26,6 @@ class SavedBooks extends Component {
 
    deleteBookHandler = (id) => {
       API.deleteBook(id)
-         .then(this.setState({ err: alert("Successful!") }))
          .then(res => this.componentDidMount())
          .catch(err => console.log(err));
    }
@@ -53,16 +53,21 @@ class SavedBooks extends Component {
             </BookList>
          );
       } else {
-         booksResult = <h1 style={{textAlign: 'center', marginTop: '50px'}}>You don't have any books saved.</h1>
+         booksResult = <h1 style={{ textAlign: 'center', marginTop: '50px' }}>You don't have any books saved.</h1>
       }
-      
+
       if (this.state.loader) {
          booksResult = <Spinner />
       }
-      
+
       return (
          <Container>
-            {booksResult}
+            <Row>
+               <Jumbotron />
+            </Row>
+            <Row>
+               {booksResult}
+            </Row>
          </Container>
       )
    }
