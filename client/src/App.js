@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/Navigation/NavigationItems/NavigationItems";
 import Jumbotron from './components/UI/Jumbotron/Jumbotron';
-import Search from "./pages/Search";
+import SearchBooks from "./pages/Search";
 import SavedBooks from "./pages/Saved";
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
         <NavBar />
         <Jumbotron />
         <Switch>
-          <Route exact path="/" component={Search} />
+          <Route exact path="/" component={SearchBooks} />
           <Route exact path="/saved" component={SavedBooks} />
         </Switch>
       </Router>
