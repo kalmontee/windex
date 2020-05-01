@@ -20,3 +20,13 @@
 .Navbar span {
   color: #fbbc05;
 }
+
+@media only screen and (max-width: 600px) {
+  .Navbar,
+  ul {
+    display: block;
+    text-align: center;
+    padding: 7px;
+    margin: 0;
+  }
+}

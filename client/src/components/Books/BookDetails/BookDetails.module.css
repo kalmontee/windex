@@ -83,3 +83,54 @@
 .DeleteBtn {
   background-color: #dd0d0d;
 }
+
+@media only screen and (max-width: 768px) {
+  .Container {
+    display: block;
+  }
+
+  .BookInfo {
+    padding: 0 50px 0 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .BookSection {
+    text-align: center;
+  }
+
+  .Container {
+    display: block;
+  }
+
+  .BookSynopsis {
+    display: none;
+  }
+
+  .BookTitle {
+    font-size: 1.75rem;
+    margin: 5px 0;
+  }
+
+  .BookAuthors {
+    font-size: 17px;
+  }
+
+  .BookInfo {
+    padding: 0;
+  }
+
+  .BookLink {
+    padding: 10.3px;
+  }
+
+  .Button {
+    padding: 13.3px;
+  }
+
+  .BooksBtn {
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+  }
+}

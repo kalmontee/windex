@@ -12,3 +12,10 @@
   color: #fff;
   text-decoration: none;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .Jumbotron {
+    padding: 45px 5px;
+  }
+}
