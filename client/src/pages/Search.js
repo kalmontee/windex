@@ -34,7 +34,7 @@ class SearchBooks extends Component {
     this.setState({ loader: true });
     API.search(this.state.search)
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         this.setState({
           books: res.data.items,
           loader: false // remove the loader once it finds results
@@ -43,11 +43,16 @@ class SearchBooks extends Component {
       // Throw in a Modal component displaying an error message.
       .catch(() =>
         this.setState({
-          loader: true, // Continue the loader is there's an error
           books: [],
           message: "No New Books Found, Try a Different Query" // Needs to be placed somewhere (could throw modal here)
         })
       );
+
+      if (this.state.search === "")
+      return this.setState({
+        message: alert("Cannot enter an empty search."),
+        loader: false
+      })
   }
 
   saveBookHandler = (id) => {
@@ -62,8 +67,8 @@ class SearchBooks extends Component {
       description: book.volumeInfo.description,
       image: book.volumeInfo.imageLinks.thumbnail
     })
-      .then(this.setState({ message: alert("Your book is saved") })) // Alerting the user the book has been saved.
-      .catch(err => console.log(err)) // Pop a modal saying there's an alert
+      .then(this.setState({ message: alert("Your book is saved") }))
+      .catch(err => alert(err)) // Pop a modal saying there's an alert
   }
 
   render() {
