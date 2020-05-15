@@ -10,7 +10,8 @@ const NavBar = (props) => {
         <h2>Virtual <span>G</span>Books</h2>
       </div>
       <ul>
-        <NavigationItem />
+        <NavigationItem link="/">Search</NavigationItem>
+        <NavigationItem link="/saved">Saved</NavigationItem>
       </ul>
     </nav>
   )
