@@ -6,6 +6,7 @@ import BookDetails from '../components/Books/BookDetails/BookDetails';
 import BookList from '../components/Books/BookDetails/BookList/BookList';
 import InputSearch from '../components/InputSearch/InputSearch';
 import Spinner from '../components/UI/Spinner/Spinner';
+import Modal from '../components/UI/Modal/Modal';
 import API from "../utils/API";
 
 class SearchBooks extends Component {
@@ -13,6 +14,7 @@ class SearchBooks extends Component {
     search: "",
     message: "",
     loader: false,
+    showModal: false,
     books: [],
   }
 
@@ -21,6 +23,9 @@ class SearchBooks extends Component {
     const { name, value } = event.target
     this.setState({ [name]: value });
   };
+
+  // Closing the Modal once the user clicks anywhere besides the modal
+  modalClosedHanlder = () => this.setState({ showModal: false });
 
   // OnClick button function to receive all the data
   handleFormSubmit = (event) => {
@@ -32,43 +37,50 @@ class SearchBooks extends Component {
   searchGoogleBooks = () => {
     // Initialize the loader
     this.setState({ loader: true });
+
     API.search(this.state.search)
       .then(res => {
-        // console.log(res.data)
         this.setState({
           books: res.data.items,
           loader: false // remove the loader once it finds results
-        })
+        });
       })
-      // Throw in a Modal component displaying an error message.
-      .catch(() =>
+
+      // Will output an error.
+      .catch(() => {
+        if (this.state.search === "") {
+          return this.setState({
+            message: "Cannot enter an empty search.",
+            showModal: true,
+            modalClosed: false,
+            loader: false
+          })
+        }
+
         this.setState({
           books: [],
-          message: "No New Books Found, Try a Different Query" // Needs to be placed somewhere (could throw modal here)
-        })
-      );
-
-      if (this.state.search === "")
-      return this.setState({
-        message: alert("Cannot enter an empty search."),
-        loader: false
-      })
+          showModal: true,
+          message: "We apolgize.. No Books Found, Try a Different Query"
+        });
+      });
   }
 
   saveBookHandler = (id) => {
-    let book = this.state.books.find(book => book.id === id);
+    const book = this.state.books.find(book => book.id === id);
 
-    // Saving all books contents to the database
-    API.saveBook({
+    const foundResults = {
       id: book.id,
       title: book.volumeInfo.title,
       link: book.volumeInfo.infoLink,
       authors: book.volumeInfo.authors,
       description: book.volumeInfo.description,
       image: book.volumeInfo.imageLinks.thumbnail
-    })
-      .then(this.setState({ message: alert("Your book is saved") }))
-      .catch(err => alert(err)) // Pop a modal saying there's an alert
+    }
+
+    // Saving all books contents to the database
+    API.saveBook(foundResults)
+      .then(() => this.setState({ showModal: true, message: "Your book is now saved. Go to your Saved page to view!" }))
+      .catch(() => this.setState({ showModal: true, message: "You already saved this book." }));
   }
 
   render() {
@@ -113,6 +125,11 @@ class SearchBooks extends Component {
             formSubmit={(event) => this.handleFormSubmit(event)}
           />
         </Row>
+        <Modal
+          show={this.state.showModal}
+          modalClosed={this.modalClosedHanlder}>
+          <h3>{this.state.message}</h3>
+        </Modal>
         <Row>
           {booksResult}
         </Row>
