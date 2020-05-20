@@ -2,23 +2,22 @@
   display: flex;
 }
 
-.Info {
+.NotFoundPage .InfoDiv {
   width: 50%;
+  text-align: center;
 }
 
-.Emoji {
-  text-align: center;
+.NotFoundPage .InfoDiv .Emoji {
   margin-top: 90px;
   margin-bottom: 20px;
   font-size: 10rem;
 }
 
-.Text {
-  text-align: center;
+.NotFoundPage .InfoDiv .Text {
   font-weight: 400;
 }
 
-.Background {
+.NotFoundPage .Background {
   background-image: url(https://www.lineupthebooks.com/content/images/2019/01/boy-in-space-post-img.png);
   background-size: 100% 100%;
   background-size: cover;
@@ -27,6 +26,19 @@
   width: 50%;
   height: auto;
   min-height: 675px;
-  -webkit-box-shadow: -9px 0px 10px -4px rgba(0, 0, 0, 0.71);
-  box-shadow: -9px 0px 10px -4px rgba(0, 0, 0, 0.71);
+  -webkit-box-shadow: -9px 0px 10px -8px rgba(0, 0, 0, 0.71);
+  box-shadow: -9px 0px 10px -8px rgba(0, 0, 0, 0.71);
+}
+
+.NotFoundPage .InfoDiv .RedirectBtn {
+  padding: 1rem 1rem 0.6rem 1rem;
+  border-radius: 0.3rem;
+  background-color: #75f334;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 0.375rem;
+  border-radius: 0.125rem;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
