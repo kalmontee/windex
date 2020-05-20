@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-input {
+.FormControl input {
   width: 40%;
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
@@ -16,7 +16,7 @@ input {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-button {
+.FormControl button {
   padding: 1rem 1rem 0.6rem 1rem;
   border-radius: 0.3rem;
   background-color: #75f334;
@@ -30,7 +30,7 @@ button {
 }
 
 @media only screen and (max-width: 768px) {
-  input {
+  .FormControl input {
     width: 60%;
   }
 }
@@ -42,7 +42,7 @@ button {
     padding: 15px 0;
   }
   
-  input {
+  .FormControl input {
     width: 50%;
   }
 }
