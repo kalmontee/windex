@@ -93,7 +93,7 @@ class SearchBooks extends Component {
               <BookDetails
                 // Getting books with the same IDs. If they have the same ID then give book.etag as a second ID.
                 key={book.id ? book.etag : null}
-                authors={book.volumeInfo.authors.join(", ")}
+                authors={book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : null}
                 title={book.volumeInfo.title}
                 synopsis={book.volumeInfo.description ? book.volumeInfo.description : null}
                 link={book.volumeInfo.infoLink}
