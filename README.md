@@ -30,4 +30,4 @@ Third party APIs: [Google Books API](https://developers.google.com/books/)
 [virtualgbooks.herokuapp.com](https://virtualgbooks.herokuapp.com/)
 
 ## Author
-Kelvin Almonte --> [kalmontee](github/kalmontee.com)
+Kelvin Almonte
