@@ -1,4 +1,4 @@
-# Virtual GBooks
+# Virtual G-Books
 
 ![Screenshot (176)](https://user-images.githubusercontent.com/52462582/80656735-e2c78f00-8a4f-11ea-8892-07fa6827025b.png)
 
